@@ -1,0 +1,56 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+#include <stdlib.h>
+#define for_i for(int i = 0; i < n; i++)
+void swap(int* a, int* b)
+{
+int z = *a;
+*a = *b;
+*b = z;
+}
+void sort(int n, int *m)
+{
+int q = 0;
+for (int i = 0; i < n; i++)
+{
+for (int j = 1; j < (n-i); j++)
+{
+if (m[j] < m[j - 1])
+{
+swap(&m[j],&m[j-1]);
+}
+q++;
+}
+}
+printf("Кол-во сравнений:");
+printf("%d\n", q);
+}
+
+int main ()
+{
+  int *m; 
+  int i, n;
+  system("chcp 1251");
+  system("cls");
+  printf("Введите размер массива: ");
+  scanf("%d", &n);
+  m = (int*)malloc(n * sizeof(int));
+  for_i
+  {
+    printf("m[%d] = ", i);
+    scanf("%d", &m[i]);
+  }
+   for_i
+    printf("%d ", m[i]);
+    printf("\n");
+sort(n, m);
+printf("Отсортированный массив:\n");
+for_i
+{
+printf("%d ", m[i]);
+}
+free(m);
+getchar();   
+return 0;
+}
